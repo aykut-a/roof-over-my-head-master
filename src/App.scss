@@ -1,0 +1,908 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root{
+  --cream: rgb(255, 252, 241);
+  --dblue: rgb(4, 28, 44);
+  --blue: rgb(7, 114, 133);
+  --dred: rgb(78, 8, 3);
+  --red: rgb(228, 46, 46);
+}
+
+@mixin centered{
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+
+a{
+  text-decoration:none;
+  color: white;
+}
+
+
+// Spans
+span.bold{
+  font-weight: 600;
+  color: rgb(51, 51, 51);
+}
+
+span.blue{
+  color: var(--blue);
+  margin: 0 5px;
+}
+
+button{
+  cursor: pointer;
+  background-color:var(--dred);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  transition: background-color 200ms;
+}
+
+button:hover{
+  background-color: var(--red)
+}
+
+
+
+// Header ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.header{
+  @include centered;
+  height:4rem;
+  background-color:var(--dblue);
+}
+
+.header-btn{
+  position: relative;
+  margin: 0 15px;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: 2px;;
+}
+
+.header-btn:after{
+  content:"";
+  position: absolute;
+  bottom:0;
+  left:0;
+  width: 100%;
+  transform: scaleX(0) scaleY(1);
+  transition: transform 200ms;
+  height:2px;
+  background-color: white;
+}
+
+.header-btn:hover:after{
+  transform: scaleX(1) scaleY(1);
+}
+
+.header-logo{
+  position: absolute;
+  left:1rem;
+  cursor: pointer;
+}
+
+.side-buttons{
+  display:flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  position: absolute;
+  right: 2rem;
+
+  .side-button{
+    background-color:transparent;
+    font-size:1.2rem;
+    color: var(--blue);
+    @include centered;
+    transition: color 200ms;
+  }
+
+  .side-button:hover{
+    color:white;
+  }
+}
+
+// Hamburger Menu Button
+.hamburger-menu-button{
+  @include centered;
+  position: absolute;
+  cursor: pointer;
+  right: 1rem;
+
+  .icon{
+    font-size:2rem;
+    color: var(--blue);
+    transition: color 200ms;
+  }
+
+  .icon:hover{
+    color: white;
+  }
+}
+
+.hamburger-menu{
+  position:fixed;
+  display:flex;
+  justify-content:space-evenly;
+  flex-direction: column;
+  z-index: 2;
+  top:0;
+  left: 0;
+  width:100vw;
+  height:100vh;
+  background-color:white;
+}
+
+.hamburger-btn{
+  @include centered;
+  color: black;
+  background-color:white;
+  text-transform: uppercase;
+  font-size:1.2rem;
+  letter-spacing: 2px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+}
+
+.hamburger-btn:hover{
+  background-color: white;
+}
+
+.hamburger-btn:after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width:100%;
+  height:1px;
+  background-color:var(--blue);
+}
+
+svg.back-hamburger{
+  position: absolute;
+  right: 1rem;
+  top:1rem;
+  font-size:2rem;
+  color: var(--blue);
+}
+
+.offer-count{
+  @include centered;
+  width: 20px;
+  height:20px;
+  border-radius:50%;
+  background-color:var(--cream);
+  color:var(--blue);
+  position: absolute;
+  font-size: 15px;
+  font-weight: 600;
+  right: -13px;
+  top:0px;
+}
+
+// About Page ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.about-section{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex: 1; // okay?
+  padding:1rem 0;  // okay?
+  img{
+    width:400px;
+    height:400px;
+    object-fit: cover;
+  }
+  div{
+    width: 600px;
+    text-align: justify;
+    line-height: 1.7;
+    margin-left: 2rem;
+  }
+}
+
+// Home page //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+div.homepage{ // Just like the offer page 
+  flex:1;
+  @include centered;
+  flex-direction:column;
+}
+
+.intro{
+  @include centered;
+
+  div{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align: justify;
+    width:500px;
+    line-height: 1.7;
+  }
+
+  img{
+    padding: 2rem;
+    width: 500px;
+  }
+}
+
+
+// Rooms Page //////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+.rooms-page-div{
+  display: flex;
+  // position: relative;
+  width:70%;
+  margin: 1rem auto;
+
+  div.rooms-container{
+    flex-direction: column;
+  }
+
+  div.filters-container{
+    padding:2rem;
+    position:sticky;
+    width:300px;
+    top:1rem;
+    height:min-content;
+    background-color: var(--cream);
+    transition: box-shadow 200ms;
+    box-shadow: 0 0 2px 0 var(--blue);
+
+    h3{
+      @include centered;
+      justify-content:flex-start;
+    }
+  }
+
+  div.filters-container:hover{
+    box-shadow: 0 0 5px 0 var(--blue);
+  }
+
+  div.filter{
+    display:flex;
+    align-items:center;
+    border-bottom:1px solid rgba(0, 0, 0, 0.26);
+    border-right:1px solid rgba(0, 0, 0, 0.26);
+    position: relative;
+    margin-top:1rem;
+
+    p{
+      @include centered;
+    }
+
+    p.rent{
+      position:absolute;
+      right: 1rem;
+      top: 0%;
+    }
+
+    select{
+      cursor:pointer;
+      outline:none;
+      background-color: var(--dblue);
+      color: white;
+      border:0;
+      padding:2px 5px;
+      font-size:16px;
+      transition: box-shadow 200ms;
+    }
+
+    select:hover{
+      box-shadow: 0 0 7px 0 var(--blue);
+    }
+
+    input{
+      margin-left:0.5rem;
+      cursor:pointer;
+    }
+
+    input.checkbox{
+      width:1rem;
+      height:1rem;
+    }
+
+  }
+
+  .filter-icon{
+    color: var(--blue);
+    margin-left: 5px;
+  }
+
+  div.filter:hover{
+    box-shadow: 0 0 2px 0 var(--blue);
+  }
+
+  div.column-filter{
+    flex-direction:column;
+    align-items:start;
+  }
+
+  div.filtered-rooms{
+    padding:1rem 2rem;
+  }
+
+  button.apply-filters-btn{
+    width:100%;
+    border-radius: 0;
+    font-size:18px;
+    margin-top:1rem;
+    background-color:var(--dblue);
+  }
+
+  button.apply-filters-btn:hover{
+    background-color:var(--blue);
+  }
+
+  // Sorting By Stuff 
+
+  .sorting-options{
+    display:flex;
+    flex-direction:row-reverse;
+    align-items: center;
+    width:550px;
+    position:relative;
+    p{
+      @include centered;
+    }
+
+    button{
+      width:7rem;
+      margin-left:1rem;
+      border-radius: 0;
+      height: 2rem;
+      font-size:16px;
+      padding: 5px;
+      text-align: start;
+      .down-arrow{
+        position:absolute;
+        right:0;
+      }
+    }
+
+    button:hover{
+      background-color:var(--red);
+    }
+  }
+
+  .sorting-selector{
+    background-color: var(--dred);
+    color: var(--cream);
+    padding: 5px;
+    font-size:16px;
+    cursor: pointer;
+    outline: none;
+    transition: box-shadow 200ms;
+  }
+  
+  .sorting-selector:hover{
+    box-shadow: 0 0 5px 0 var(--red);
+  }
+
+}
+
+// Overlay and City Map //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+div.overlay{
+  @include centered;
+  display:none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width:100vw;
+  height: 100vh;
+  background-color:rgba(0, 0, 0, 0.425);
+  z-index: 3;
+}
+
+div.city-map{
+  position:relative;
+
+  div.point-on-map{
+    position: absolute;
+    top: 20%;
+    right: 20%;
+    width:15px;
+    height:15px;
+    border-radius:50%;
+    background-color:rgb(245, 92, 92);
+    animation: pulse infinite 1000ms;
+  } 
+
+  img{
+    width:400px;
+    height: 400px;
+  }
+
+  .close-map{
+    position: absolute;
+    top:1rem;
+    right: 1rem;
+    font-size:2rem;
+    color: var(--dred);
+    background-color: transparent;
+    transition: color 200ms;
+    cursor: pointer;
+  }
+
+  .close-map:hover{
+    color: var(--red);
+  }
+}
+
+// Individual Room for one üsttekinin içinde aslında bu :)  //////////////////////////////////////////////////////////////////////
+
+.individual-room{
+  @include centered;
+  position: relative;
+
+  transition: box-shadow 200ms;
+  box-shadow: 0 0 2px 0 var(--blue);
+  margin-top: 1rem;
+
+  img{
+    width:250px;
+    height:250px;
+    object-fit:cover;
+    margin-right: 1rem;
+  }
+
+  div{
+    line-height:1.7;
+    padding:1rem;
+    color: rgb(75, 73, 73);
+  }
+
+  button{
+    @include centered;
+    border-radius: 0;
+    width: 100%;
+    font-size:16px;
+    height: 3rem;
+
+    .icon{
+      margin-left: 5px;
+    }
+  }
+
+
+}
+
+.individual-room:hover{
+  box-shadow: 0 0 7px 0 var(--blue);
+}
+
+.show-location-icon{
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.show-location-icon:hover{
+  color: var(--red);
+}
+
+
+.mail-list-section{
+  @include centered;
+  div{
+    width:500px;
+  }
+  
+  div + div{
+    margin-left: 3rem;
+  }
+
+  .input-container{
+    @include centered;
+    input{
+      width:400px;
+      height: 2.5rem;
+      padding: 5px 10px;
+      outline: none;
+      font-size:1.2rem;
+      border: 0;
+      box-shadow: 0 0 2px 0 var(--blue);
+      transition: box-shadow 200ms;
+      color: var(--dblue);
+    }
+    input:focus{
+      box-shadow: 0 0 5px 0 var(--blue);
+    }
+    button{
+      border-radius:0;
+      height:2.5rem;
+    }
+  }
+
+  
+}
+
+// This is more like the body element
+#root{
+  display:flex;
+  flex-direction: column;
+  min-height:100vh;
+}
+
+footer{
+  @include centered;
+  background-color:rgb(37, 37, 34);
+  color: white;
+  height:4rem;
+  margin-top: auto;
+  align-self: flex-end;
+  width:100%;
+}
+
+// Animations 
+
+@keyframes pulse{
+  0% {
+    box-shadow: 0px 0px 10px 0px rgb(255, 0, 0);
+  }
+  50%{
+    box-shadow: 0px 0px 30px 10px red;
+  } 
+  100%{
+    box-shadow: 0px 0px 30px 10px rgba(255, 0, 0, 0);
+  }
+}
+
+// Offers Handling 
+div.individual-offer{
+  border-bottom:1px solid var(--blue);
+  border-right:1px solid var(--blue);
+  margin-top: 1.5rem;
+  transition: box-shadow 200ms;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  div.individual-offer-info{
+    padding: 1rem;
+    height:150px;
+    display:flex;
+    flex:1;
+    justify-content:space-between;
+    div{
+      display:flex;
+      flex-direction: column;
+      justify-content:space-between;
+    }
+  }
+
+  img{
+    width:150px;
+    height:150px;
+    object-fit: cover;
+  }
+}
+
+div.individual-offer:hover{
+  box-shadow: 0 0 5px 0 var(--blue);
+  border-bottom:1px solid transparent;
+  border-right:1px solid transparent;
+}
+
+.delete-offer-button{
+  transform: scale(1.2);
+  margin-right: 1rem; // ldeteing
+  color: var(--dred);
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+.delete-offer-button:hover{
+  color: var(--red);
+}
+
+div.offer-made{
+  @include centered;
+  height: 3rem;
+  width:100%;
+  letter-spacing:2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--blue);
+  background-color:var(--cream);
+  border: 3px solid var(--blue);
+  animation: blue-pulse 200ms  ease-in-out ;
+}
+
+@keyframes blue-pulse {
+  0%{
+    outline: 1px solid var(--blue);
+  }
+  100%{
+    outline: 10px solid transparent;
+  }
+}
+
+// Offers page self   
+div.offers-page{
+  padding:1rem;
+}
+
+// Custom Scrollbar 
+body::-webkit-scrollbar {
+  width: 10px; 
+}
+body::-webkit-scrollbar-track {
+  background: var(--cream);    
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--blue);
+  border-radius: 10px;       
+  border: 1px solid var(--dblue);
+}
+
+// Responsiveness
+
+@media (max-width: 1153px) {
+
+  // Home page
+  .intro{
+    div{
+      width:400px; 
+    }
+    img{
+      width: 400px;
+    }
+  }
+
+  .mail-list-section{
+  div{
+    width:400px;
+  }
+
+  .input-container{
+    input{
+      width:400px;
+    }
+  }
+}
+
+// About Page
+
+.about-section{
+  img{
+    width:400px;
+    height:400px;
+  }
+  div{
+    width: 400px;
+    margin-left: 2rem;
+  }
+}
+
+// Rooms page 
+
+  .rooms-page-div{
+  width:90%; // mesela mı 
+  margin: 1rem auto;
+
+  div.filters-container{
+    top: 1rem;
+    height:60vh;
+    width:300px;
+    position:sticky;
+    padding:2rem;
+  }
+
+  }
+
+}
+
+
+@media (max-width: 900px) {
+
+  // Home page
+  .intro{
+    flex-direction: column;
+    div{
+      width:600px; 
+      order: 2;
+    }
+    img{
+      width: 600px;
+    }
+  }
+
+  .mail-list-section{
+    flex-direction: column;
+    div{
+    width:600px;
+    }
+
+    .input-container{
+      width:600px;
+      margin: 1rem 0;
+    input{
+      width:500px;
+    }
+    }
+  }
+
+  // About Page
+
+  .about-section{
+    flex-direction: column;
+  img{
+    width:600px;
+    height:400px;
+  }
+  div{
+    width: 600px;
+    margin: 1rem 0;
+  }
+  }
+
+// Rooms page 
+
+  .rooms-page-div{
+  width:90%; // mesela mı 
+  margin: 1rem auto;
+
+  flex-direction:column;
+
+  div.filters-container{
+    position: relative;
+    margin: auto;
+    width:500px;
+    padding:2rem;
+  }
+
+  div.rooms-container{
+    margin-top: 2rem;
+  }
+
+  div.filtered-rooms{
+    width:100%;
+    margin: 0;
+    padding:0;
+  }
+
+  
+  div.individual-room{
+    width:100%;
+    div{
+      flex: 1;
+    }
+  }
+  
+
+  }
+
+  // Offers
+  div.individual-offer{
+    display:flex;
+    div.individual-offer-info{
+      display:flex;
+      flex-direction: column;
+      padding: 0 1rem;
+      flex:1;
+      div{
+        flex-direction: row;
+      }
+    } 
+  }
+
+}
+
+@media (max-width: 768px){
+    // Home page
+    .intro{
+      flex-direction: column;
+      div{
+        width:95%; 
+        order: 2;
+        line-height: 1.2;
+      }
+      img{
+        width: 95%;
+        padding: 0;
+        margin-top: 1rem;
+      }
+    }
+  
+    .mail-list-section{
+      flex-direction: column;
+      div{
+      width:95%;
+      }
+      .input-container{
+        width:95%;
+        margin: 1rem 0;
+      input{
+        width:100%;
+      }
+      }
+    }
+
+    .about-section{
+      flex-direction: column;
+    img{
+      width:95%;
+      margin: 0;
+    }
+    div{
+      width: 95%;
+    }
+    }
+
+    .rooms-page-div{
+      width:95%; // mesela mı 
+      margin: 1rem auto;
+    
+      flex-direction:column;
+    
+      div.filters-container{
+        position: relative;
+        margin: auto;
+        width:95%;
+        height:min-content;
+        padding:2rem;
+      }
+    
+      div.rooms-container{
+        margin-top: 2rem;
+      }
+
+      div.sorting-options{
+        width:100%;
+        margin: 1rem 0;
+      }
+    
+      div.filtered-rooms{
+        width:100%;
+        margin: 0;
+        padding:0;
+      }
+    
+      div.individual-room{
+        width:100%;
+        flex-direction: column;
+        img{
+          width:100%;
+          margin: 0;
+        }
+        div{
+          flex: 1;
+          width:100%;
+        }
+      }
+    
+      }
+
+    // Offers pages
+
+    div.individual-offer{
+      flex-direction:column;
+      div.individual-offer-info{
+        display:flex;
+        flex-direction: column;
+        width:100%;
+        div{
+          flex-direction: row;
+        }
+      } 
+      img{
+          width:100%;
+      }
+    }
+
+    footer{
+      font-size: 14px;
+    }
+}
+
